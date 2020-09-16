@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+            color: white;
+            background-color: rgb(100, 38, 214);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Countdown Timer Example</h1>
+    <h2 class="timer"></h2>
+    <script>
+        //    var countDownDate = new Date("June 5, 2022 11:27:15").getTime();
+        //    var timeClear = setInterval(function() {
+        //   var now = new Date().getTime();
+        //   var timeLeft = countDownDate - now;
+
+        //   var timeLeft = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        //   for(timeLeft = 60; timeLeft > 0; timeLeft-- )
+        //   document.querySelector(".timer").innerHTML =timeLeft + "s ";
+        //   if (timeLeft <= 1 ) {
+        //     //  clearInterval(timeClear);
+             
+        //   }
+        //      1000;
+        var timeEl = document.querySelector(".timer");
+        var mainEl = document.getElementById("main");
+        var secondsLeft = 10;
+        function setTime() {
+
+            var timerInterval = setInterval(function () {
+
+
+                secondsLeft--;
+
+
+                timeEl.textContent = secondsLeft + " POINTS.";
+
+
+                if (secondsLeft === 0) {
+
+                    clearInterval(timerInterval);
+                    document.querySelector(".timer").innerHTML = "Game Over";
+                    showColorExplosion();
+                }
+
+            }, 1000);
+            
+        }
+        setTime();
+    </script>
+</body>
+
+</html>

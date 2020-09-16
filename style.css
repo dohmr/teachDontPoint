@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content:center;
+    text-align: center;
+    margin: 0 auto;
+}
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    max-width: 80%;
+    padding: 5px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2), auto;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+
+.btn.correct {
+    background-color: green;
+    color: white;
+}
+
+.btn.wrong {
+    background-color: red;
+    color: white;
+}
+
+.start-btn {
+
+    font-weight: bold;
+    padding: 10px 20px;
+
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}

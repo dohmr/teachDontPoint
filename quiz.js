@@ -26,7 +26,7 @@ var secondsLeft = 60;
 var timeRemaining = [];
 function setTime() {
   timeEl.removeAttribute("class", "hide")
-}
+
 var timerInterval = setInterval(function () {
   
   if (secondsLeft > 0) {
@@ -44,7 +44,7 @@ var timerInterval = setInterval(function () {
 
 }
   , 1000);
-
+}
 
 // setTime();
 

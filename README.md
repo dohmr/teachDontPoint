@@ -19,3 +19,5 @@ The deployed App can be used here https://dohmr.github.io/teachDontPoint/ .
 This was created through creative collaborations with my peers, instruction from... my Instructor. The use of online resources which were numerous!
 
 I encourage any feedback and would love some constructive criticism!
+
+![tiny quiz screen](assets/tiny-quiz.jpg);

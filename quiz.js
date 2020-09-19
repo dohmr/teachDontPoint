@@ -1,3 +1,4 @@
+//numurous variables , accessing HTML
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
 var endButton = document.getElementById("end-btn")
@@ -7,6 +8,7 @@ var answerButtonsElement = document.getElementById('answer-buttons')
 var timeEl = document.getElementById('timer');
 var landPage = document.getElementById('landing')
 var scorePage = document.getElementById('scores')
+
 
 startButton.addEventListener('click', startGame)
 startButton.addEventListener('click', setTime)
@@ -20,7 +22,7 @@ endButton.addEventListener('click', endGame)
 function hideLanding() {
   landPage.setAttribute("class", 'hide')
 }
-
+// 
 // var mainEl = document.getElementById("main");
 var secondsLeft = 60;
 var timeRemaining = [];
@@ -48,14 +50,16 @@ var timerInterval = setInterval(function () {
 
 // setTime();
 
-
+//Game begins by clicking start, which activates the timer
 function startGame() {
 
   startButton.setAttribute("class", 'hide')
   askQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.removeAttribute("class", 'hide')
+  // grabs next question
   setNextQuestion();
+  //starts timer
   setTime();
 }
 
@@ -65,21 +69,28 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
+  //this grabs from array of questions
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
+    //each answer button receives this fun function
     let button = document.createElement('button')
     button.innerText = answer.text
     button.setAttribute("class", 'btn')
+    //the following if sets the new attribute of selevted button
     if (answer.correct) {
       button.dataset.correct = answer.correct
     }
+    // select answer on click event
     button.addEventListener('click', selectAnswer)
+    //append answer buttons to html
     answerButtonsElement.appendChild(button)
   })
 }
 
 function resetState() {
+  //this resets the css on the html
   clearStatusClass(document.body)
+  //this hides the next button until next answer is selected
   nextButton.setAttribute("class", 'hide')
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -91,18 +102,20 @@ function selectAnswer(event) {
   var correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
+    //this sets corresponding buttons of true to css style.
+    //this can also dictate right or wrong 
     setStatusClass(button, button.dataset.correct)
   })
   //stop game
   if (askQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
-
+  //this exposes end game button
   } else {
     endButton.innerText = 'Stop the Clock!'
     endButton.removeAttribute("class", 'hide')
   }
 }
-
+//following functions clears questions and buttons for final name input
 function endGame() {
   questionContainerElement.setAttribute("class", "hide")
   scorePage.removeAttribute("class", "hide")
@@ -122,7 +135,7 @@ var scores = [];
 renderScores();
 
 var scores = [];
-
+//was unable to figure out how to manipulate time clock with wrong answers...
 function renderScores() {
   scoreList.innerHTML = "";
   scoreCountSpan.textContent = scores.length;
@@ -169,17 +182,17 @@ scoreList.addEventListener("click", function (event) {
 });
 
 
-
+//this functions reads answers parameters in the questions array
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
     element.classList.add('correct')
-
+  //subsequently changing their class
   } else {
     element.classList.add('wrong')
   }
 }
-
+//then clearing them for next question
 function clearStatusClass(element) {
   element.classList.remove('correct')
 
